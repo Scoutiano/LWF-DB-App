@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1148.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lwf.FXMLDocumentController">
+  <tabs>
+    <Tab text="Students">
+         <content>
+            <AnchorPane prefHeight="706.0" prefWidth="1221.0">
+               <children>
+                  <TableView fx:id="studentTable" layoutX="66.0" layoutY="50.0" prefHeight="537.0" prefWidth="1017.0" />
+                  <Button layoutX="979.0" layoutY="599.0" mnemonicParsing="false" onAction="#loadStudentAddForm" text="Add Student" />
+                  <Button layoutX="865.0" layoutY="599.0" mnemonicParsing="false" onAction="#loadStudentEditForm" text="Edit Selected" />
+                  <Button layoutX="718.0" layoutY="599.0" mnemonicParsing="false" onAction="#removeStudent" text="Remove Selected " />
+                  <Button layoutX="66.0" layoutY="599.0" mnemonicParsing="false" onAction="#loadStudents" text="Clear Search" />
+                  <Button layoutX="547.0" layoutY="599.0" mnemonicParsing="false" onAction="#loadTuitionForm" prefHeight="31.0" prefWidth="163.0" text="View Student Tuition" />
+                  <Button layoutX="66.0" layoutY="14.0" mnemonicParsing="false" onAction="#loadStudentSearchForm" text="Search" />
+                  <ComboBox fx:id="studentYearSelectCB" layoutX="933.0" layoutY="14.0" prefWidth="150.0" />
+                  <Label layoutX="883.0" layoutY="19.0" text="Year:" />
+                  <Button layoutX="775.0" layoutY="14.0" mnemonicParsing="false" onAction="#addYear" text="Add Year" />
+                  <Button layoutX="375.0" layoutY="599.0" mnemonicParsing="false" onAction="#viewStudentGrades" text="Student Grade Report" />
+                  <Button layoutX="547.0" layoutY="645.0" mnemonicParsing="false" onAction="#tuitionReport" prefHeight="31.0" prefWidth="163.0" text="Get Tuition Report" />
+               </children>
+            </AnchorPane>
+         </content></Tab>
+      <Tab closable="false" text="Professions">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="professionTable" layoutX="66.0" layoutY="50.0" prefHeight="537.0" prefWidth="368.0">
+                     <columns>
+                        <TableColumn prefWidth="140.0" text="Professions" />
+                     </columns>
+                  </TableView>
+                  <TableView fx:id="professionSubjectsTable" layoutX="497.0" layoutY="50.0" prefHeight="537.0" prefWidth="560.0">
+                     <columns>
+                        <TableColumn prefWidth="140.0" text="Subject ID" />
+                        <TableColumn prefWidth="140.0" text="Subject Name" />
+                        <TableColumn prefWidth="140.0" text="Total Grade" />
+                        <TableColumn prefWidth="140.0" text="Semester" />
+                     </columns>
+                  </TableView>
+                  <Button layoutX="312.0" layoutY="597.0" mnemonicParsing="false" onAction="#loadProfessionAddForm" text="Add Profession" />
+                  <Button layoutX="175.0" layoutY="597.0" mnemonicParsing="false" onAction="#removeProfession" text="Remove Selected" />
+                  <Button layoutX="66.0" layoutY="597.0" mnemonicParsing="false" onAction="#loadProfessionEditForm" text="Edit Selected" />
+                  <Label layoutX="497.0" layoutY="29.0" text="Profession's Subjects:" />
+                  <Button layoutX="497.0" layoutY="597.0" mnemonicParsing="false" onAction="#removeSubjectFromProfession" text="Remove Subject" />
+                  <Button layoutX="627.0" layoutY="597.0" mnemonicParsing="false" onAction="#addSubjectToProfession" text="Add Subject" />
+                  <Label fx:id="professionNotifLbl" layoutX="66.0" layoutY="628.0" />
+                  <ChoiceBox fx:id="subjectCB" layoutX="735.0" layoutY="597.0" prefHeight="31.0" prefWidth="228.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="Subjects">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="subjectTable" layoutX="66.0" layoutY="50.0" prefHeight="537.0" prefWidth="420.0" />
+                  <Button layoutX="383.0" layoutY="599.0" mnemonicParsing="false" onAction="#loadSubjectAddForm" prefHeight="31.0" prefWidth="103.0" text="Add Subject" />
+                  <Button layoutX="271.0" layoutY="599.0" mnemonicParsing="false" onAction="#loadSubjectEditForm" text="Edit Selected" />
+                  <Button layoutX="130.0" layoutY="599.0" mnemonicParsing="false" onAction="#removeSubject" text="Remove Selected" />
+                  <TableView fx:id="subjectInfoTable" layoutX="574.0" layoutY="50.0" prefHeight="537.0" prefWidth="420.0" />
+                  <RadioButton fx:id="studentRB" layoutX="574.0" layoutY="19.0" mnemonicParsing="false" text="Students" />
+                  <RadioButton fx:id="teacherRB" layoutX="675.0" layoutY="19.0" mnemonicParsing="false" text="Teachers" />
+                  <Button fx:id="addTeacherBtn" layoutX="750.0" layoutY="599.0" mnemonicParsing="false" onAction="#loadAddTeacherToSubjectForm" prefHeight="31.0" prefWidth="104.0" text="Add Teacher" visible="false" />
+                  <Button fx:id="setGradeBtn" layoutX="574.0" layoutY="599.0" mnemonicParsing="false" onAction="#setGrade" text="Set Grade" />
+                  <TextField fx:id="setGradeTF" layoutX="675.0" layoutY="599.0" prefHeight="31.0" prefWidth="180.0" />
+                  <Label fx:id="setGradeNotifLbl" layoutX="574.0" layoutY="639.0" />
+                  <Button fx:id="removeTeacherBtn" layoutX="610.0" layoutY="599.0" mnemonicParsing="false" onAction="#removeTeacher" text="Remove Teacher" visible="false" />
+                  <ComboBox fx:id="subjectYearCB" layoutX="866.0" layoutY="14.0" prefHeight="31.0" prefWidth="128.0" />
+                  <Label fx:id="subjectAverageLbl" layoutX="930.0" layoutY="604.0" prefHeight="21.0" prefWidth="56.0" />
+                  <Label fx:id="avgLbl" layoutX="866.0" layoutY="604.0" text="Average:" />
+                  <Label fx:id="numLbl" layoutX="866.0" layoutY="639.0" text="Number:" />
+                  <Label fx:id="subjectNumberOfStudentsLbl" layoutX="930.0" layoutY="639.0" />
+                  <Label layoutX="819.0" layoutY="19.0" text="Year:" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="Employees">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="employeeTable" layoutX="66.0" layoutY="50.0" prefHeight="537.0" prefWidth="1017.0" />
+                  <Button layoutX="966.0" layoutY="599.0" mnemonicParsing="false" onAction="#loadEmployeeAddForm" text="Add Employee" />
+                  <Button layoutX="849.0" layoutY="599.0" mnemonicParsing="false" onAction="#loadEmployeeEditForm" text="Edit Selected" />
+                  <Button layoutX="704.0" layoutY="599.0" mnemonicParsing="false" onAction="#removeEmployee" text="Remove Selected" />
+                  <Button layoutX="66.0" layoutY="14.0" mnemonicParsing="false" onAction="#loadEmployeeSearchForm" text="Search" />
+                  <Button layoutX="66.0" layoutY="599.0" mnemonicParsing="false" onAction="#clearEmployeeSearch" text="Clear Search" />
+                  <RadioButton fx:id="employeeTypeRB" layoutX="727.0" layoutY="19.0" mnemonicParsing="false" text="All" />
+                  <RadioButton fx:id="teacherTypeRB" layoutX="795.0" layoutY="19.0" mnemonicParsing="false" text="Teachers" />
+                  <RadioButton fx:id="managerTypeRB" layoutX="894.0" layoutY="19.0" mnemonicParsing="false" text="Managers" />
+                  <RadioButton fx:id="secretaryTypeRB" layoutX="995.0" layoutY="19.0" mnemonicParsing="false" text="Secretaries" />
+                  <Button fx:id="setEmployeeTypeBtn" layoutX="342.0" layoutY="599.0" mnemonicParsing="false" onAction="#setEmployeeType" text="Set Employee as:" />
+                  <ChoiceBox fx:id="employeeTypeCB" layoutX="481.0" layoutY="599.0" prefWidth="150.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>
